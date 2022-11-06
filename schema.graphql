@@ -1,0 +1,50 @@
+
+
+type Post{
+    id: String
+    "Blog Post Title",
+    title: String!
+    content: String!
+    comment: String!
+}
+
+
+"User type are defined here"
+type User{
+    id: String
+    name:String
+    address: UserAddress
+}
+
+type UserAddress {
+    city: String
+    street: String
+    post: String
+}
+
+type Follower {
+    id: String
+    name: String
+}
+
+type Query {
+    getUser(id: String!): User!
+    getPosts(userId: String!): [Post]
+    getFollowers(userId: String!): [Follower]
+}
+
+enum GenderType{
+    MALE
+    FEMALE
+}
+
+input UserInpuType{
+    name: String!
+    age: Int!
+   gender: GenderType!
+}
+
+type Mutation {
+    "To Create a new user"
+    createUser(user: UserInpuType!): User!
+}
